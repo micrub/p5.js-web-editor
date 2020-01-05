@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "gen-ctags": "ctags -V -R */**/*.js",
-    "gen-p5-ctags": "rm -rf resources/p5js.current.tags && touch resources/p5js.current.tags && ctags -V -R -f resources/p5js.current.tags libs/*.js ",
+    "gen-ctags-p5": "ctags -f resources/p5js.current.tags -V -R libs/p5.0.10.2.js",
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development npx nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "lint": "eslint client server --ext .jsx --ext .js",
