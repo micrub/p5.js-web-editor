@@ -4,7 +4,9 @@
   "description": "The web editor for p5.js.",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
+    "gen-ctags": "ctags -V -R */**/*.js",
+    "gen-ctags-p5": "ctags -f resources/p5js.current.tags -V -R libs/p5.0.10.2.js",
+    "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development npx nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "lint": "eslint client server --ext .jsx --ext .js",
     "lint-fix": "eslint client server --ext .jsx --ext .js --fix",
@@ -20,7 +22,8 @@
     "fetch-examples:prod": "cross-env NODE_ENV=production node ./dist/fetch-examples.bundle.js",
     "fetch-examples-gg:prod": "cross-env NODE_ENV=production node ./dist/fetch-examples-gg.bundle.js",
     "fetch-examples-ml5:prod": "cross-env NODE_ENV=production node ./dist/fetch-examples-ml5.bundle.js",
-    "heroku-postbuild": "touch .env; npm run build"
+    "heroku-postbuild": "touch .env; npm run build",
+    "dev:start-mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "jest": {
     "setupFiles": [
@@ -115,6 +118,7 @@
     "cors": "^2.8.5",
     "cross-env": "^5.2.1",
     "csslint": "^0.10.0",
+    "ctags": "^3.1.0",
     "date-fns": "^1.30.1",
     "decomment": "^0.8.7",
     "dotenv": "^2.0.0",
